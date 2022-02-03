@@ -24,7 +24,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: SonarScanner for .NET 6 with pull request decoration support
-      uses: highbyte/sonarscan-dotnet@v2.0
+      uses: highbyte/sonarscan-dotnet@2.0
       with:
         sonarProjectKey: Dakraid_ProfileSite
         sonarProjectName:  ProfileSite
