@@ -1,5 +1,9 @@
 name: .NET Build and SonarScan
 
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
 on:
   push:
     branches: [ main ]
@@ -11,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.5.1
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -22,7 +24,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: SonarScanner for .NET 6 with pull request decoration support
-      uses: highbyte/sonarscan-dotnet@v2.1.2
+      uses: highbyte/sonarscan-dotnet@v2.0
       with:
         sonarProjectKey: Dakraid_ProfileSite
         sonarProjectName:  ProfileSite
@@ -31,8 +33,3 @@ jobs:
         dotnetTestArguments: ./kschlikow.profile --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
         sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
         dotnetDisableTests: true
-       
-
-env:
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
