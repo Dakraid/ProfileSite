@@ -1,0 +1,405 @@
+﻿@using Squidex.ClientLibrary
+@using Microsoft.AspNetCore.Html
+@model HomeVm
+@inject SquidexClientManager Squidex
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>@Model.Basics.FirstName @Model.Basics.LastName</title>
+
+	<link href="assets/css/styles.css" rel="stylesheet">
+	<link href="assets/css/animation.css" rel="stylesheet">
+	<link href="assets/css/slick.css" rel="stylesheet">
+</head>
+
+<body>
+	<section class="section-one">
+		<div class="container">
+			<div class="col-left wow fadeInLeft" data-wow-delay="0.1s">
+				<h1>
+					@Model.Basics.FirstName<br />@Model.Basics.LastName
+				</h1>
+				<h3>@Model.Basics.Profession</h3>
+
+				<p>@Model.Basics.Summary</p>
+
+				<ul class="social">
+					@if (!string.IsNullOrWhiteSpace(Model.Basics.GithubLink))
+					{
+						<li>
+							<a href="@Model.Basics.GithubLink" target="_blank">
+								<img src="assets/images/social-github.png" alt="Github" />
+								<span class="tooltiptext">Github</span>
+							</a>
+						</li>
+					}
+
+					@if (!string.IsNullOrWhiteSpace(Model.Basics.TwitterLink))
+					{
+						<li>
+							<a href="@Model.Basics.TwitterLink" target="_blank">
+								<img src="assets/images/social-twitter.png" alt="Twitter" />
+								<span class="tooltiptext">Twitter</span>
+							</a>
+						</li>
+					}
+
+					@if (!string.IsNullOrWhiteSpace(Model.Basics.LinkedInLink))
+					{
+						<li>
+							<a href="@Model.Basics.LinkedInLink" target="_blank">
+								<img src="assets/images/social-linkedin.png" alt="LinkedIn" />
+								<span class="tooltiptext">LinkedIn</span>
+							</a>
+						</li>
+					}
+
+					@if (!string.IsNullOrWhiteSpace(Model.Basics.BlogLink))
+					{
+						<li>
+							<a href="@Model.Basics.BlogLink" target="_blank">
+								<img src="assets/images/social-blog.png" alt="Blog" />
+								<span class="tooltiptext">Blog</span>
+							</a>
+						</li>
+					}
+				</ul>
+			</div>
+			<div class="col-right wow fadeInRight" data-wow-delay="0.2s">
+				@if (!string.IsNullOrWhiteSpace(Model.Basics.EmailAddress))
+				{
+					<a href="mailto:@Model.Basics.EmailAddress" title="@Model.Basics.EmailAddress" class="email-icon"></a>
+				}
+
+				@if (Model.Basics.Image?.Length > 0)
+				{
+					<img src="@Squidex.GenerateImageUrl(Model.Basics.Image)?width=512&height=516&mode=Crop" alt="@Model.Basics.FirstName @Model.Basics.LastName" class="pull-left" />
+				}
+				else
+				{
+					<img src="assets/images/placeholder.jpg" alt="@Model.Basics.FirstName @Model.Basics.LastName" class="pull-left" />
+				}
+
+				<div class="top"></div>
+				<div class="bottom"></div>
+			</div>
+		</div>
+	</section>
+	<section class="section-2">
+		<div class="container">
+			<h2 class="wow fadeInUp" data-wow-delay="0.3s">Projekte die ich aufgebaut habe...</h2>
+			<div class="col-left">
+				<h3 class="wow fadeInUp" data-wow-delay="0.3s" style="color: #353638;">Professional</h3>
+				<ul class="slider wow fadeInUp" data-wow-delay="0.4s">
+					@foreach (var project in Model.ProfessionalProjects.OrderByDescending(x => x.Data.Year))
+					{
+						<li>
+							<a href="@project.Data.Link" target="_blank">
+								@if (project.Data.Image?.Length > 0)
+								{
+									<img src="@Squidex.GenerateImageUrl(project.Data.Image)?width=305&height=236&mode=Crop" alt="@project.Data.Name" />
+								}
+								else
+								{
+									<img src="assets/images/placeholder.jpg" alt="@project.Data.Name" />
+								}
+
+								@if (!string.IsNullOrWhiteSpace(project.Data.Label))
+								{
+									<span class="project-tag">@project.Data.Label</span>
+								}
+								<div class="project-detail">
+									<h3>@project.Data.Name</h3>
+									<p>
+										@project.Data.Description
+									</p>
+									@if (!string.IsNullOrWhiteSpace(project.Data.Link))
+									{
+										<span class="arrow"></span>
+									}
+								</div>
+							</a>
+						</li>
+					}
+				</ul>
+			</div>
+			<div class="col-right">
+				<h3 class="wow fadeInUp" data-wow-delay="0.3s" style="color: #353638;">Hobbyist</h3>
+				<ul class="slider wow fadeInUp" data-wow-delay="0.4s">
+					@foreach (var project in Model.PersonalProjects.OrderByDescending(x => x.Data.Year))
+					{
+						<li>
+							<a href="@project.Data.Link" target="_blank">
+								@if (project.Data.Image?.Length > 0)
+								{
+									<img src="@Squidex.GenerateImageUrl(project.Data.Image)?width=305&height=236&mode=Crop" alt="@project.Data.Name" />
+								}
+								else
+								{
+									<img src="assets/images/placeholder.jpg" alt="@project.Data.Name" />
+								}
+
+								@if (!string.IsNullOrWhiteSpace(project.Data.Label))
+								{
+									<span class="project-tag">@project.Data.Label</span>
+								}
+								<div class="project-detail">
+									<h3>@project.Data.Name</h3>
+									<p>
+										@project.Data.Description
+									</p>
+									@if (!string.IsNullOrWhiteSpace(project.Data.Link))
+									{
+										<span class="arrow"></span>
+									}
+								</div>
+							</a>
+						</li>
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="section-3">
+		<div class="container">
+			<h2 class="wow fadeInUp" data-wow-delay="0.1s">
+				Meine Erfahrung
+
+				@if (!string.IsNullOrWhiteSpace(Model.Basics.LinkedInLink))
+				{
+					<span>
+						<a class="linkedin" href="@Model.Basics.LinkedInLink" title="Besuchen Sie mein LinkedIn Profil">Besuchen Sie mein LinkedIn Profil</a>
+					</span>
+				}
+			</h2>
+			<ul class="load-more-list" id="exp-list">
+				@{
+					var experienceDelay = 0.2;
+				}
+				@foreach (var experience in Model.Experiences.OrderByDescending(x => x.Data.From))
+				{
+					experienceDelay += 0.1;
+
+					<li class="wow fadeInUp" data-wow-delay="@(experienceDelay)s">
+						<div class="img-cell">
+							@if (experience.Data.Logo?.Length > 0)
+							{
+								<img src="@Squidex.GenerateImageUrl(experience.Data.Logo)?width=80&height=80&mode=Crop" alt="@experience.Data.Company" />
+							}
+							else
+							{
+								<img src="assets/images/placeholder.jpg" alt="@experience.Data.Company" />
+							}
+						</div>
+						<div class="detail">
+							<h3>@experience.Data.Position</h3>
+							<h4>@experience.Data.Company</h4>
+
+							<p>@experience.Data.From.ToString("MMM yyyy") - @(experience.Data.To?.ToString("MMM yyyy") ?? "Now")</p>
+						</div>
+					</li>
+				}
+			</ul>
+			@if (Model.Experiences.Count > 3)
+			{
+				<a href="#" class="show-more exp-list-show wow fadeInUp" data-wow-delay="0.5s" title="Zeige Mehr...">Zeige Mehr...</a>
+			}
+
+			<h2 class="wow fadeInUp" data-wow-delay="0.2s">
+				Meine Fähigkeiten
+
+				@if (!string.IsNullOrWhiteSpace(Model.Basics.EmailAddress))
+				{
+					<span>
+						<a href="mailto:@Model.Basics.EmailAddress" title="Klingt vielversprechend? Schreiben Sie mir!">
+							Klingt vielversprechend? Schreiben Sie mir!
+						</a>
+					</span>
+				}
+			</h2>
+			<h3 class="wow fadeInUp" data-wow-delay="0.2s" style="text-align: center;">Expert - Professional - Advanced - Intermediate - Beginner</h3>
+			<ul class="skills">
+				@{
+					var skillDelay = 0.2;
+					var priority = new[]
+			{
+				"Expert",
+				"Professional",
+				"Advanced",
+				"Intermediate",
+				"Beginner"
+				};
+				}
+				@foreach (var skill in Model.Skills.OrderBy(x => Array.IndexOf(priority, x.Data.Experience)))
+				{
+					skillDelay += 0.1;
+
+					<li class="wow fadeIn" data-wow-delay="@(skillDelay)s">
+						@skill.Data.Name <span>- @skill.Data.Experience</span>
+					</li>
+				}
+			</ul>
+
+			<h2 class="wow fadeInUp" data-wow-delay="0.1s">Mein Lebenslauf</h2>
+			<ul class="load-more-list" id="edu-list">
+				@{
+					var educationDelay = 0.2;
+				}
+				@foreach (var education in Model.Education.OrderByDescending(x => x.Data.From))
+				{
+					educationDelay += 0.1;
+
+					<li class="wow fadeInUp" data-wow-delay="@(educationDelay)s">
+						<div class="img-cell">
+							@if (education.Data.Logo?.Length > 0)
+							{
+								<img src="@Squidex.GenerateImageUrl(education.Data.Logo)?width=80&height=80&mode=Pad" alt="@education.Data.Degree" />
+							}
+							else
+							{
+								<img src="assets/images/placeholder.jpg" alt="@education.Data.Degree" />
+							}
+						</div>
+						<div class="detail">
+							<h3>@education.Data.Degree</h3>
+							<h4>@education.Data.Status</h4>
+							<h4>@education.Data.School</h4>
+
+							<p>@education.Data.From.ToString("MMM yyyy") - @(education.Data.To?.ToString("MMM yyyy") ?? "Now")</p>
+						</div>
+					</li>
+				}
+			</ul>
+
+			@if (Model.Education.Count > 1)
+			{
+				<a href="#" class="show-more edu-list-show wow fadeInUp" data-wow-delay="0.3s" title="Zeige Mehr...">Zeige Mehr...</a>
+			}
+
+			<div class="line"></div>
+		</div>
+	</section>
+	@if (Model.Certifications.Count > 0)
+	{
+		<section class="section-4">
+			<div class="container">
+				<h2 class="wow fadeInUp" data-wow-delay="0.1s">Zertifikate</h2>
+				<div class="cert-list">
+					@{
+						var certificationDelay = 0.2;
+					}
+					@foreach (var certification in Model.Certifications)
+					{
+						certificationDelay += 0.1;
+
+						<div class="wow fadeInUp cert" data-wow-delay="0.2s">
+							<div class="badge">
+								@if (certification.Data.Badge?.Length > 0)
+								{
+									<img src="@Squidex.GenerateImageUrl(certification.Data.Badge)?width=238&height=238&mode=Crop" alt="@certification.Data.Name" />
+								}
+								else
+								{
+									<img src="assets/images/placeholder.jpg" alt="@certification.Data.Name" />
+								}
+							</div>
+							<div class="detail">
+								<h3>@certification.Data.Name</h3>
+								<p>@(certification.Data.Date?.ToString("MMM yyyy") ?? "")</p>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</section>
+	}
+	@if (Model.Publications.Count > 0)
+	{
+		<section class="section-4">
+			<div class="container">
+				<h2 class="wow fadeInUp" data-wow-delay="0.1s">Publikationen</h2>
+				<ul class="pub-list">
+					@{
+						var publicationDelay = 0.2;
+					}
+					@foreach (var publication in Model.Publications)
+					{
+						publicationDelay += 0.1;
+
+						<li class="wow fadeInUp" data-wow-delay="0.2s">
+							<a href="@publication.Data.Link" target="_blank">
+								<div class="img">
+									@if (publication.Data.Cover?.Length > 0)
+									{
+										<img src="@Squidex.GenerateImageUrl(publication.Data.Cover)?width=188&height=238&mode=Crop" alt="@publication.Data.Name" />
+									}
+									else
+									{
+										<img src="assets/images/placeholder.jpg" alt="@publication.Data.Name" />
+									}
+								</div>
+								<div class="detail">
+									<h3>@publication.Data.Name</h3>
+									<p>
+										@publication.Data.Description
+									</p>
+								</div>
+							</a>
+						</li>
+					}
+				</ul>
+			</div>
+		</section>
+	}
+	<footer>
+		<div class="container">
+			<h2 class="wow fadeInUp" data-wow-delay="0.1s">Hab ich ihr Interesse geweckt? Dann kontaktieren Sie mich!</h2><br />
+
+			@if (!string.IsNullOrWhiteSpace(Model.Basics.EmailAddress))
+			{
+				<a title="Email Me" data-wow-delay="0.2s" href="mailto:@Model.Basics.EmailAddress" class="btn-email-me wow fadeInUp">
+					<span>Email Me</span>
+				</a>
+			}
+			<div class="row">
+				<div class="pull-right wow fadeInRight" data-wow-delay="0.3s">
+					<a title="Powered By Squidex" href="http://squidex.io">
+						<img src="assets/images/power-by.png" alt="Power By Squidex" />
+					</a>
+				</div>
+				<div class="pull-left">
+					<a href="#" class="wow fadeInLeft open" data-wow-delay="0.3s" title="Legal Terms">Legal Terms</a>
+				</div>
+			</div>
+			<div class="line"></div>
+			<div class="box"></div>
+		</div>
+	</footer>
+	<div class="modal-frame">
+		<div class="modal">
+			<div class="modal-inset">
+				<div class="button close">
+					<i class="fa fa-close"></i>
+				</div>
+				<div class="modal-body">
+					<h3>Legal Terms</h3>
+					@(new HtmlString(Model.Basics.LegalTerms))
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-overlay"></div>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/smoothanimation.js"></script>
+	<script src="assets/js/easing.js"></script>
+	<script src="assets/js/slick.js"></script>
+	<script src="assets/js/custom.js"></script>
+
+</body>
+</html>
