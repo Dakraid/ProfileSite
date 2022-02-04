@@ -107,7 +107,7 @@ select {
     -webkit-appearance: none; /* Safari and Chrome */
     -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
     appearance: none;
-    background: #fff url(../images/select-arrow.png) no-repeat right center;
+    background: #fff url(../img/select-arrow.png) no-repeat right center;
     height: 40px;
     outline: none;
     padding: 7px 10px;
@@ -167,7 +167,7 @@ a.red-bt {
 }
 
 a.red-bt span {
-    background: url(../images/white-arrow-small.png) no-repeat right 21px;
+    background: url(../img/white-arrow-small.png) no-repeat right 21px;
     display: inline-block;
     padding-right: 25px;
 }

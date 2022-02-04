@@ -38,7 +38,7 @@ indent_size = 2
 indent_size = 2
 
 # Razor and cshtml files
-# UTF-8-BOM is set as default, as all official template files use UTF-8-BOM
+# UTF-8-BOM is set as default, as all official distlate files use UTF-8-BOM
 # See https://github.com/dotnet/aspnetcore/pull/23502 and https://github.com/dotnet/aspnetcore/issues/22753
 [*.{razor,cshtml}]
 indent_size = 2

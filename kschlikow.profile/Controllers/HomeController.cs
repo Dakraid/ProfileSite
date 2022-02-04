@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // Filename : HomeController.cs
 // Project: kschlikow.profile / kschlikow.profile
 // Author : Kristian Schlikow (kristian@schlikow.de)
@@ -25,10 +25,7 @@ namespace kschlikow.profile.Controllers
     {
         private readonly SquidexClientManager _clientManager;
 
-        public HomeController(SquidexClientManager clientManager)
-        {
-            _clientManager = clientManager;
-        }
+        public HomeController(SquidexClientManager clientManager) => _clientManager = clientManager;
 
         public async Task<IActionResult> Index()
         {
@@ -99,14 +96,6 @@ namespace kschlikow.profile.Controllers
             var records = await _clientManager.CreateContentsClient<Basics, BasicsData>("basics").GetAsync(query);
 
             vm.Basics = records.Items.FirstOrDefault()?.Data ?? new BasicsData();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel
-            {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            });
         }
     }
 }

@@ -5,6 +5,83 @@
   <PropertyGroup>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;RECS0145;RECS0154</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;RECS0145;RECS0154</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Assets\JavaScript\custom.js" />
+    <None Remove="Assets\StyleSheet\styles.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\FontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Assets\Fonts\FontAwesome\fontawesome-webfont.svg" />
+    <Content Include="Assets\Fonts\FontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Fonts\FontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Assets\Fonts\FontAwesome\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Fonts\FontAwesome\FontAwesome.otf" />
+    <Content Include="Assets\Fonts\revelstoke-condensed-webfont.eot" />
+    <Content Include="Assets\Fonts\revelstoke-condensed-webfont.svg" />
+    <Content Include="Assets\Fonts\revelstoke-condensed-webfont.ttf" />
+    <Content Include="Assets\Fonts\revelstoke-condensed-webfont.woff" />
+    <Content Include="Assets\Fonts\revelstoke-condensed-webfont.woff2" />
+    <Content Include="Assets\Fonts\Stolzl-Bold.eot" />
+    <Content Include="Assets\Fonts\Stolzl-Bold.otf" />
+    <Content Include="Assets\Fonts\Stolzl-Bold.svg" />
+    <Content Include="Assets\Fonts\Stolzl-Bold.ttf" />
+    <Content Include="Assets\Fonts\Stolzl-Bold.woff" />
+    <Content Include="Assets\Fonts\Stolzl-Bold.woff2" />
+    <Content Include="Assets\Fonts\Stolzl-Book.eot" />
+    <Content Include="Assets\Fonts\Stolzl-Book.otf" />
+    <Content Include="Assets\Fonts\Stolzl-Book.svg" />
+    <Content Include="Assets\Fonts\Stolzl-Book.ttf" />
+    <Content Include="Assets\Fonts\Stolzl-Book.woff" />
+    <Content Include="Assets\Fonts\Stolzl-Book.woff2" />
+    <Content Include="Assets\Fonts\Stolzl-Light.eot" />
+    <Content Include="Assets\Fonts\Stolzl-Light.otf" />
+    <Content Include="Assets\Fonts\Stolzl-Light.svg" />
+    <Content Include="Assets\Fonts\Stolzl-Light.ttf" />
+    <Content Include="Assets\Fonts\Stolzl-Light.woff" />
+    <Content Include="Assets\Fonts\Stolzl-Light.woff2" />
+    <Content Include="Assets\Fonts\Stolzl-Medium.eot" />
+    <Content Include="Assets\Fonts\Stolzl-Medium.otf" />
+    <Content Include="Assets\Fonts\Stolzl-Medium.svg" />
+    <Content Include="Assets\Fonts\Stolzl-Medium.ttf" />
+    <Content Include="Assets\Fonts\Stolzl-Medium.woff" />
+    <Content Include="Assets\Fonts\Stolzl-Medium.woff2" />
+    <Content Include="Assets\Fonts\Stolzl-Regular.eot" />
+    <Content Include="Assets\Fonts\Stolzl-Regular.otf" />
+    <Content Include="Assets\Fonts\Stolzl-Regular.svg" />
+    <Content Include="Assets\Fonts\Stolzl-Regular.ttf" />
+    <Content Include="Assets\Fonts\Stolzl-Regular.woff" />
+    <Content Include="Assets\Fonts\Stolzl-Regular.woff2" />
+    <Content Include="Assets\Images\ajax-loader.gif" />
+    <Content Include="Assets\Images\arrow.png" />
+    <Content Include="Assets\Images\email-icon.png" />
+    <Content Include="Assets\Images\placeholder.jpg" />
+    <Content Include="Assets\Images\power-by.png" />
+    <Content Include="Assets\Images\social-blog.png" />
+    <Content Include="Assets\Images\social-github.png" />
+    <Content Include="Assets\Images\social-googleplus.png" />
+    <Content Include="Assets\Images\social-linkedin.png" />
+    <Content Include="Assets\Images\social-twitter.png" />
+    <Content Include="Assets\JavaScript\custom.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Assets\js\custom.js" />
+    <Content Include="Assets\js\html5shiv.js" />
+    <Content Include="Assets\js\placeholder.js" />
+    <Content Include="Assets\js\respond.min.js" />
+    <Content Include="Assets\js\slick.js" />
+    <Content Include="Assets\js\wow.min.js" />
+    <Content Include="Assets\StyleSheet\styles.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.13" />
     <PackageReference Include="RefactoringEssentials" Version="5.6.0" />
