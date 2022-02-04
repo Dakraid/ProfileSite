@@ -21,7 +21,7 @@ jobs:
       uses: actions/setup-node@v2.5.1
 
     - name: Compile with Grunt
-      uses: elstudio/actions-js-build/build@v4
+      uses: elstudio/actions-js-build/build@v2
       with:
         wdPath: './kschlikow.profile'
         args: all
