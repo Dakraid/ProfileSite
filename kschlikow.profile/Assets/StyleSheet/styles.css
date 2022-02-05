@@ -477,6 +477,7 @@ h4 {
 }
 
 .load-more-list li:first-child {
+  display: block;
   background: #237de3 !important;
 }
 
