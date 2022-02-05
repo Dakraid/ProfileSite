@@ -20,8 +20,8 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.5.1
 
-    - name: Install autoconf
-      run: sudo apt-get install -y dh-autoreconf
+    - name: Install Build Tools
+      run: sudo apt-get update && sudo apt-get install -y autoconf automake build-essential dh-autoreconf gcc git libjpeg-turbo8 libjpeg-turbo8-dev libpng16-16 libpng-dev libwebp6 libwebp-dev nasm zlib1g zlib1g-dev
       
     - name: Compile with Grunt
       uses: elstudio/actions-js-build/build@v2
