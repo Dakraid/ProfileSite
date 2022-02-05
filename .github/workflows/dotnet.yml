@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.5.1
@@ -41,7 +43,7 @@ jobs:
     - name: SonarScanner for .NET 6 with pull request decoration support
       uses: dakraid/sonarscan-dotnet@v2.1.2n
       with:
-        sonarProjectKey: Dakraid_ProfileSite
+        sonarProjectKey: ProfileSite
         sonarProjectName:  ProfileSite
         sonarOrganization: dakraid
         dotnetBuildArguments: ./kschlikow.profile
