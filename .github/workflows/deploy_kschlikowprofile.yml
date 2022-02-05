@@ -1,0 +1,74 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - kschlikowProfile
+
+on:
+  push:
+    branches:
+      - deploy
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+    
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.5.1
+
+      - name: Install Build Tools
+        run: sudo apt-get update && sudo apt-get install -y autoconf automake build-essential dh-autoreconf gcc git libjpeg-turbo8 libjpeg-turbo8-dev libpng16-16 libpng-dev libwebp6 libwebp-dev nasm zlib1g zlib1g-dev
+        
+      - name: NPM install with caching
+        uses: bahmutov/npm-install@v1.6.0
+        with:
+          working-directory: './kschlikow.profile'
+          useLockFile: true
+      
+      - name: Compile with Grunt
+        run: cd ./kschlikow.profile && npx grunt all
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+        
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release --no-restore
+
+      - name: dotnet publish
+        run: dotnet publish --configuration Release --no-build --output ${{env.DOTNET_ROOT}}/myapp
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
+          
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2.1.0
+        with:
+          name: .net-app
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2.2.3
+        with:
+          app-name: 'kschlikowProfile'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6ABCD3E0B7C441D387AFF3B78C9D4FAE }}
+          package: .
