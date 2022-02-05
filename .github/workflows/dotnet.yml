@@ -4,12 +4,7 @@ env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
-on:
-  push:
-    branches: [ main ]
-    
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -20,11 +15,17 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.5.1
 
-    - name: Compile with Grunt
-      uses: elstudio/actions-js-build/build@v2
+    - name: Install Build Tools
+      run: sudo apt-get update && sudo apt-get install -y autoconf automake build-essential dh-autoreconf gcc git libjpeg-turbo8 libjpeg-turbo8-dev libpng16-16 libpng-dev libwebp6 libwebp-dev nasm zlib1g zlib1g-dev
+      
+    - name: NPM install with caching
+      uses: bahmutov/npm-install@v1.6.0
       with:
-        wdPath: './kschlikow.profile'
-        args: all
+        working-directory: './kschlikow.profile'
+        useLockFile: true
+    
+    - name: Compile with Grunt
+      run: cd ./kschlikow.profile && npx grunt all
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
