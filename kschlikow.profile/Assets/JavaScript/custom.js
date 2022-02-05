@@ -1,22 +1,30 @@
 $(document).ready(function () {
   "use strict";
 
-  $("#exp-list li:lt(${x})").css("display", "table");
+  var size_li = $("#exp-list li").length;
+
+  let x = 3;
+  $("#exp-list li:lt("+ x +")").css("display", "table");
 
   $(".exp-list-show").click(function (e) {
     e.preventDefault();
     $("#exp-list").children(":hidden").css("display", "table");
+    x = (x+1 <= size_li) ? x+1 : size_li;
+    $("#exp-list li:lt("+x+")").show();
 
     if ($("#exp-list").children(":hidden").length === 0) {
       $(".exp-list-show").css("opacity", "0").css("visibility", "hidden");
     }
   });
 
-  $("#edu-list li:lt(${y})").css("display", "table");
+  let y = 1;
+  $("#edu-list li:lt("+ y +")").css("display", "table");
 
   $(".edu-list-show").click(function (e) {
     e.preventDefault();
     $("#edu-list").children(":hidden").css("display", "table");
+    y = (y+1 <= edu_size_li) ? y+1 : edu_size_li;
+    $("#edu-list li:lt("+y+")").show();
 
     if ($("#edu-list").children(":hidden").length === 0) {
       $(".edu-list-show").css("opacity", "0").css("visibility", "hidden");
