@@ -91,6 +91,19 @@ module.exports = function (grunt) {
         },
       },
     },
+    imagemin: {
+      dynamic: {
+        options: {
+            optimizationLevel: 5,
+        },
+        files: [{
+            expand: true,
+            cwd: 'Assets/Images',
+            src: ['**/*.{png,jpg,gif,svg}'],
+            dest: 'wwwroot/img'
+        }]
+      }
+    },
     watch: {
       files: ["Assets/JavaScript/*.js", "Assets/StyleSheet/*.css"],
       tasks: ["all"],
@@ -103,6 +116,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
+  grunt.loadNpmTasks("grunt-contrib-imagemin");
 
   grunt.loadNpmTasks("grunt-contrib-watch");
 
@@ -113,5 +127,6 @@ module.exports = function (grunt) {
     "jshint",
     "uglify",
     "cssmin",
+    "imagemin",
   ]);
 };

@@ -829,6 +829,7 @@ footer .pull-right:hover img {
   -o-transition: opacity 0.25s ease 0s, visibility 0.35s linear;
   -webkit-transition: opacity 0.25s ease, visibility 0.35s linear;
   -webkit-transition-delay: 0s, 0s;
+  transition: opacity 0.25s ease 0s, visibility 0.35s linear;
   transition-delay: 0s, 0s;
   background-color: #000;
   bottom: 0;
@@ -838,7 +839,6 @@ footer .pull-right:hover img {
   position: fixed;
   right: 0;
   top: 0;
-  transition: opacity 0.25s ease 0s, visibility 0.35s linear;
   visibility: hidden;
   z-index: 40;
 }

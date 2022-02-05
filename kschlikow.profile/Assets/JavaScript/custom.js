@@ -1,7 +1,6 @@
 $(document).ready(function () {
   "use strict";
 
-  const x = 3;
   $("#exp-list li:lt(${x})").css("display", "table");
 
   $(".exp-list-show").click(function (e) {
@@ -13,7 +12,6 @@ $(document).ready(function () {
     }
   });
 
-  const y = 1;
   $("#edu-list li:lt(${y})").css("display", "table");
 
   $(".edu-list-show").click(function (e) {
