@@ -6,7 +6,7 @@
 
 body {
     color: #5e646c;
-    font-family: arial;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 21px;
     overflow-x: hidden;
@@ -91,7 +91,7 @@ a {
 
 h1 {
     color: #f4f6f8;
-    font-family: 'revelstokecondensed';
+    font-family: 'revelstokecondensed', Arial, Helvetica, sans-serif;
     font-size: 55px;
     font-weight: normal;
     line-height: 57px;
@@ -100,7 +100,7 @@ h1 {
 h2 {
     color: #353638;
     float: left;
-    font-family: 'revelstokecondensed';
+    font-family: 'revelstokecondensed', Arial, Helvetica, sans-serif;
     font-size: 31px;
     font-weight: normal;
     line-height: 36px;
@@ -124,7 +124,7 @@ h2 {
 
 h3, h4 {
     color: #f4f6f8;
-    font-family: 'Stolzl';
+    font-family: 'Stolzl', Arial, Helvetica, sans-serif;
     font-size: 17px;
     font-weight: normal;
 }
@@ -309,7 +309,7 @@ h4 {
             background: rgba(4, 19, 36, 0.65);
             border-radius: 30px;
             color: #fff;
-            font-family: 'Stolzl';
+            font-family: 'Stolzl', Arial, Helvetica, sans-serif;
             font-size: 13px;
             padding: 6px 15px;
             position: absolute;
@@ -419,7 +419,7 @@ h4 {
         .section-3 h2 span a {
             color: #eef703;
             display: block;
-            font-family: 'Stolzl';
+            font-family: 'Stolzl', Arial, Helvetica, sans-serif;
             font-size: 15px;
             line-height: 32px;
             position: relative;
@@ -516,7 +516,7 @@ a.show-more {
     border: 1px solid #144377;
     color: #237de3;
     float: left;
-    font-family: 'Stolzl';
+    font-family: 'Stolzl', Arial, Helvetica, sans-serif;
     font-size: 15px;
     line-height: 60px;
     margin-top: 18px;
@@ -545,7 +545,7 @@ a.show-more {
         background: #144377;
         color: #fff;
         flex-grow: 1;
-        font-family: 'Stolzl';
+        font-family: 'Stolzl', Arial, Helvetica, sans-serif;
         font-size: 17px;
         margin-right: 10px;
         margin-top: 10px;
@@ -747,7 +747,7 @@ a.btn-email-me {
     border-radius: 40px;
     color: #353638;
     display: inline-block;
-    font-family: 'Stolzl Medium';
+    font-family: 'Stolzl Medium', Arial, Helvetica, sans-serif;
     font-size: 16px;
     padding: 25px 35px 25px 25px;
     position: relative;
