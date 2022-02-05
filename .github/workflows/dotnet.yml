@@ -21,7 +21,7 @@ jobs:
       uses: actions/setup-node@v2.5.1
 
     - name: Install autoconf
-      run: sudo apt-get install -y autoconf
+      run: sudo apt-get install -y dh-autoreconf
       
     - name: Compile with Grunt
       uses: elstudio/actions-js-build/build@v2
