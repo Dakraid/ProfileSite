@@ -7,6 +7,7 @@ env:
 on:
   push:
     branches: [ main ]
+    
   pull_request:
     branches: [ main ]
 
@@ -15,14 +16,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.5.1
+
+    - name: Compile with Grunt
+      uses: elstudio/actions-js-build/build@v2
+      with:
+        wdPath: './kschlikow.profile'
+        args: all
+        
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --no-restore
+      
     - name: SonarScanner for .NET 6 with pull request decoration support
       uses: dakraid/sonarscan-dotnet@v2.1.2n
       with:
