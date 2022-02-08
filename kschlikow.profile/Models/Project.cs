@@ -35,6 +35,6 @@ namespace kschlikow.profile.Models
         public string[] Image { get; set; }
 
         [JsonConverter(typeof(InvariantConverter))]
-        public int Year { get; set; }
+        public int? Year { get; set; }
     }
 }

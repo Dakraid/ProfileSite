@@ -1,7 +1,7 @@
 $(document).ready(function () {
   "use strict";
 
-  var size_li = $("#exp-list li").length;
+  let size_li = $("#exp-list li").length;
 
   let x = 3;
   $("#exp-list li:lt("+ x +")").css("display", "table");
@@ -75,6 +75,7 @@ $(window).resize(function () {
   }
 });
 
+/*
 (function ($) {
   "use strict";
   $(".slider").slick({
@@ -125,3 +126,4 @@ $(window).resize(function () {
     ],
   });
 })(jQuery);
+*/

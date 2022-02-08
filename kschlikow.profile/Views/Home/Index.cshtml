@@ -96,7 +96,7 @@
     <div class="col-left">
       <h3 class="wow fadeInUp" data-wow-delay="0.3s" style="color: #353638;">Professional</h3>
       <ul class="slider wow fadeInUp" data-wow-delay="0.4s">
-        @foreach (var project in Model.ProfessionalProjects.OrderByDescending(x => x.Data.Year))
+        @foreach (var project in Model.ProfessionalProjects.OrderByDescending(x => x.Data.Year.HasValue).ThenByDescending(x => x.Data.Year))
         {
           <li>
             <a href="@project.Data.Link" target="_blank">
@@ -118,6 +118,10 @@
                 <p>
                   @project.Data.Description
                 </p>
+                @if (project.Data.Year != null)
+                {
+                  <span class="date-tag">@project.Data.Year</span>
+                }
                 @if (!string.IsNullOrWhiteSpace(project.Data.Link))
                 {
                   <span class="arrow"></span>
@@ -131,7 +135,7 @@
     <div class="col-right">
       <h3 class="wow fadeInUp" data-wow-delay="0.3s" style="color: #353638;">Hobbyist</h3>
       <ul class="slider wow fadeInUp" data-wow-delay="0.4s">
-        @foreach (var project in Model.PersonalProjects.OrderByDescending(x => x.Data.Year))
+        @foreach (var project in Model.PersonalProjects.OrderByDescending(x => x.Data.Year.HasValue).ThenByDescending(x => x.Data.Year))
         {
           <li>
             <a href="@project.Data.Link" target="_blank">
@@ -153,6 +157,10 @@
                 <p>
                   @project.Data.Description
                 </p>
+                @if (project.Data.Year != null)
+                {
+                  <span class="date-tag">@project.Data.Year</span>
+                }
                 @if (!string.IsNullOrWhiteSpace(project.Data.Link))
                 {
                   <span class="arrow"></span>
@@ -398,7 +406,6 @@
 <script src="lib/deps/jquery-3.6.0.min.js"></script>
 <script src="lib/deps/smoothanimation.min.js"></script>
 <script src="lib/deps/easing.min.js"></script>
-<script src="lib/deps/slick.min.js"></script>
 <script src="lib/deps/wow.min.js"></script>
 <script>
   new WOW(
