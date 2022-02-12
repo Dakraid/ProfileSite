@@ -12,9 +12,8 @@
 
   <title>@Model.Basics.FirstName @Model.Basics.LastName</title>
 
-  <link href="css/combined.min.css" rel="stylesheet">
-  <link href="css/deps/animation.min.css" rel="stylesheet">
-  <link href="css/deps/slick.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/bundle.css" />
+    <script type="module" src="/dist/bundle.js"></script>
 </head>
 
 <body>
@@ -402,27 +401,5 @@
   </div>
 </div>
 <div class="modal-overlay"></div>
-
-<script src="lib/deps/jquery-3.6.0.min.js"></script>
-<script src="lib/deps/smoothanimation.min.js"></script>
-<script src="lib/deps/easing.min.js"></script>
-<script src="lib/deps/wow.min.js"></script>
-<script>
-  new WOW(
-    {
-      boxClass: "wow",
-      animateClass: "animated",
-      offset: 0,
-      mobile: true,
-      live: true,
-      callback: function(box) {
-      },
-      scrollContainer: null,
-      resetAnimation: true
-    }
-  ).init();
-</script>
-<script src="lib/combined.min.js"></script>
-
 </body>
 </html>
