@@ -34,7 +34,7 @@ jobs:
         useLockFile: true
     
     - name: Compile with Grunt
-      run: cd ./kschlikow.profile && npx grunt all
+      run: cd ./kschlikow.profile && npx run build
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
