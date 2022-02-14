@@ -33,7 +33,7 @@ jobs:
         working-directory: './kschlikow.profile'
         useLockFile: true
     
-    - name: Compile with Grunt
+    - name: Run ParcelJS build task
       run: cd ./kschlikow.profile && npm run build
         
     - name: Setup .NET
