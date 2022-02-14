@@ -3,8 +3,8 @@
   "name": "asp.net",
   "private": true,
   "scripts": {
-    "build": "rimraf -R .parcel-cache && parcel build assets/bundle.js --dist-dir ./wwwroot/dist/",
-    "watch": "rimraf -R .parcel-cache && parcel watch assets/bundle.js --dist-dir ./wwwroot/dist/"
+    "build": "rimraf -R .parcel-cache && parcel build Assets/bundle.js --dist-dir ./wwwroot/dist/",
+    "watch": "rimraf -R .parcel-cache && parcel watch Assets/bundle.js --dist-dir ./wwwroot/dist/"
   },
   "devDependencies": {
     "@parcel/transformer-less": "^2.3.1",
